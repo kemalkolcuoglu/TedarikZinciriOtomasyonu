@@ -1,0 +1,111 @@
+﻿@model TedarikZinciriOtomasyonu.Web.Models.ModelView.TedarikAdresMV
+
+@{
+	ViewBag.Title = "Tedarik İşlemleri";
+    var Il = ViewData["Il"] as SelectList;
+    var Ilce = ViewData["Ilce"] as SelectList;
+    var Adres = ViewData["Adres"] as SelectList;
+	var Talep = ViewData["Talep"] as SelectList;
+	var Tedarikci = ViewData["Tedarikci"] as SelectList;
+}
+
+<section class="content-header">
+	<div class="header-icon">
+		<i class="fa fa-users"></i>
+	</div>
+	<div class="header-title">
+		<h1>Tedarikler</h1>
+		<small>Tedarik İşlemleri</small>
+	</div>
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-bd lobidrag">
+				<div class="panel-heading">
+					<div class="btn-group" id="buttonlist">
+						<a class="btn btn-add " href="~/Tedarik/Tedarikler">
+							<i class="fa fa-list"></i>  Tedarik Listesi
+						</a>
+					</div>
+				</div>
+				<div class="panel-body">
+					@using (Html.BeginForm())
+					{
+						@Html.AntiForgeryToken()
+
+						<div class="form-horizontal">
+							<h4>Tedarik</h4>
+							<hr />
+							@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+							<div class="form-group">
+								@Html.LabelFor(model => model.Tedarik.TalepID, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.DropDownListFor(model => model.Tedarik.TalepID, Talep, new { @class = "form-control" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.Tedarik.KisiID, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.DropDownListFor(model => model.Tedarik.KisiID, Tedarikci, new { @class = "form-control" })
+								</div>
+							</div>
+
+                            <div class="form-group">
+								@Html.LabelFor(model => model.Adres1.IlKodu, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.Adres1.IlKodu, Il, new { @class = "form-control" })
+                                </div>
+							</div>
+
+                            <div class="form-group">
+								@Html.LabelFor(model => model.Adres1.IlceKodu, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.Adres1.IlceKodu, Tedarikci, new { @class = "form-control" })
+                                </div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.Tedarik.TeslimAdresiID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.Tedarik.TeslimAdresiID, Adres, new { @class = "form-control" })
+                                </div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.Tedarik.TeslimTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Tedarik.TeslimTarihi, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Tedarik.TeslimTarihi, "", new { @class = "text-danger" })
+								</div>
+							</div>
+
+                            <div class="form-group">
+								@Html.LabelFor(model => model.Tedarik.TedarikUcreti, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Tedarik.TedarikUcreti, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Tedarik.TedarikUcreti, "", new { @class = "text-danger" })
+								</div>
+							</div>
+
+                            <div class="form-group">
+								@Html.LabelFor(model => model.Tedarik.Durum, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Tedarik.Durum, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Tedarik.Durum, "", new { @class = "text-danger" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-md-offset-2 col-md-10">
+									<input type="submit" value="Onayla" class="btn btn-default" />
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

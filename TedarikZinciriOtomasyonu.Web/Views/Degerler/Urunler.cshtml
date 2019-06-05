@@ -1,0 +1,67 @@
+﻿@model List<TedarikZinciriOtomasyonu.VarlikKatmani.urun>
+@{
+    ViewBag.Title = "Ürünler";
+}
+
+<section class="content-header">
+    <div class="header-icon">
+        <i class="fa fa-group"></i>
+    </div>
+    <div class="header-title">
+        <h1>Panel</h1>
+        <small>Ürünler</small>
+    </div>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd lobidrag">
+                <div class="panel-heading">
+                    <div class="btn-group buttonexport">
+                        <a href="#">
+                            <h4>Ürün Detayları</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="btn-group">
+                        <div class="buttonexport" id="buttonlist">
+                            <a class="btn btn-add" href="~/Degerler/UrunEkle">
+                                <i class="fa fa-plus"></i> Ürün Ekle
+                            </a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Ürün Kategorisi</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Ürün Birimi</th>
+                                    <th>Stok</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var items in Model)
+                                {
+                                    <tr>
+                                        <td>@items.urunkategori.UrunKategoriAdi</td>
+                                        <td>@items.UrunAdi</td>
+                                        <td>@items.UrunBirimi</td>
+                                        <td>@items.Stok</td>
+                                        <td>
+                                            <a class="btn btn-add btn-sm" href="~/Degerler/UrunDuzenle/@items.UrunID"><i class="fa fa-pencil"></i></a>
+                                            <a class="btn btn-danger btn-sm" href="~/Degerler/UrunSil/@items.UrunID"><i class="fa fa-trash-o"></i> </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

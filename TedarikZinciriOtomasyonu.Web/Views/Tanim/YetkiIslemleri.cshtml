@@ -1,0 +1,64 @@
+﻿@model TedarikZinciriOtomasyonu.VarlikKatmani.yetki
+
+@{
+	ViewBag.Title = "Yetki İşlemleri";
+}
+
+<section class="content-header">
+	<div class="header-icon">
+		<i class="fa fa-users"></i>
+	</div>
+	<div class="header-title">
+		<h1>Yetkiler</h1>
+		<small>Yetki İşlemleri</small>
+	</div>
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-bd lobidrag">
+				<div class="panel-heading">
+					<div class="btn-group" id="buttonlist">
+						<a class="btn btn-add " href="~/Tanim/Yetkiler">
+							<i class="fa fa-list"></i>  Yetki Listesi
+						</a>
+					</div>
+				</div>
+				<div class="panel-body">
+
+					@using (Html.BeginForm())
+					{
+						@Html.AntiForgeryToken()
+
+						<div class="form-horizontal">
+							<h4>Yetki</h4>
+							<hr />
+							@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+							<div class="form-group">
+								@Html.LabelFor(model => model.YetkiAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.YetkiAdi, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.YetkiAdi, "", new { @class = "text-danger" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.YetkiAciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.YetkiAciklama, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.YetkiAciklama, "", new { @class = "text-danger" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-md-offset-2 col-md-10">
+									<input type="submit" value="Onayla" class="btn btn-default" />
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

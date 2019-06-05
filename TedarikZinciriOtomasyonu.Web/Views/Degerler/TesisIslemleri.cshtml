@@ -1,0 +1,112 @@
+﻿@model TedarikZinciriOtomasyonu.Web.Models.ModelView.TesisAdresMV
+
+@{
+    ViewBag.Title = "TesisIslemleri";
+    var TesisKategorisi = ViewData["TesisKategorisi"] as SelectList;
+    var Il = ViewData["Il"] as SelectList;
+    var Ilce = ViewData["Ilce"] as SelectList;
+    var Adres = ViewData["Adres"] as SelectList;
+    var Firma = ViewData["Firma"] as SelectList;
+}
+
+<section class="content-header">
+    <div class="header-icon">
+        <i class="fa fa-users"></i>
+    </div>
+    <div class="header-title">
+        <h1>Tesisler</h1>
+        <small>Tesis İşlemleri</small>
+    </div>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd lobidrag">
+                <div class="panel-heading">
+                    <div class="btn-group" id="buttonlist">
+                        <a class="btn btn-add " href="~/Degerler/Tesisler">
+                            <i class="fa fa-list"></i>  Tesis Listesi
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>UretimTesisi</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Adres.il, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.Adres.il, Il, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Adres.ilce, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.Adres.ilce, Ilce, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UretimTesisi.AdresID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.UretimTesisi.AdresID, Adres, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UretimTesisi.TesisKategoriID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.UretimTesisi.TesisKategoriID, TesisKategorisi, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UretimTesisi.FirmaID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.UretimTesisi.FirmaID, Firma, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UretimTesisi.TesisAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.UretimTesisi.TesisAdi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.UretimTesisi.TesisAdi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UretimTesisi.TesisAciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.UretimTesisi.TesisAciklama, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.UretimTesisi.TesisAciklama, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.UretimTesisi.UretimKapasitesi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.UretimTesisi.UretimKapasitesi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.UretimTesisi.UretimKapasitesi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Onayla" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

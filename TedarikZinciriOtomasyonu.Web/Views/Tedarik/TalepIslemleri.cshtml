@@ -1,0 +1,95 @@
+﻿@model TedarikZinciriOtomasyonu.VarlikKatmani.talep
+
+@{
+	ViewBag.Title = "Talep İşlemleri";
+	var UrunKategori = ViewData["UrunKategori"] as SelectList;
+	var Urun = ViewData["Urun"] as SelectList;
+	var Musteri = ViewData["Musteri"] as SelectList;
+}
+
+<section class="content-header">
+	<div class="header-icon">
+		<i class="fa fa-users"></i>
+	</div>
+	<div class="header-title">
+		<h1>Talepler</h1>
+		<small>Talep İşlemleri</small>
+	</div>
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-bd lobidrag">
+				<div class="panel-heading">
+					<div class="btn-group" id="buttonlist">
+						<a class="btn btn-add " href="~/Tedarik/Talepler">
+							<i class="fa fa-list"></i>  Talep Listesi
+						</a>
+					</div>
+				</div>
+				<div class="panel-body">
+
+					@using (Html.BeginForm())
+					{
+						@Html.AntiForgeryToken()
+
+						<div class="form-horizontal">
+							<h4>Talep</h4>
+							<hr />
+							@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+							<div class="form-group">
+								@Html.LabelFor(model => model.UrunID, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.DropDownListFor(model => model.UrunID, Urun, new { @class = "form-control" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.FirmaID, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.DropDownListFor(model => model.FirmaID, Musteri, new { @class = "form-control" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.TalepMiktari, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.TalepMiktari, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.TalepMiktari, "", new { @class = "text-danger" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.TalepTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.TalepTarihi, new { htmlAttributes = new { @class = "form-control years" } })
+									@Html.ValidationMessageFor(model => model.TalepTarihi, "", new { @class = "text-danger" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-md-offset-2 col-md-10">
+									<input type="submit" value="Onayla" class="btn btn-default" />
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+@section Script
+{
+	<script>
+		$(function () {
+			$("#TalepTarihi").datepicker({
+				showWeek: true,
+				firstDay: 1,
+				dateFormat: 'dd.mm.yy'
+			});
+		});
+	</script>
+}

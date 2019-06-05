@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+@Html.Partial("_Head")
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <div id="preloader">
+            <div id="status"></div>
+        </div>
+        @Html.Partial("_Header")
+        @Html.Partial("_Aside")
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        @Html.Partial("_Footer")
+    </div>
+    @Html.Partial("_Scripts")
+
+	@RenderSection("Script", false)
+</body>
+</html>

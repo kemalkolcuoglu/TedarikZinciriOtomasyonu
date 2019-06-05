@@ -1,0 +1,59 @@
+﻿@model TedarikZinciriOtomasyonu.VarlikKatmani.yetki
+
+@{
+	ViewBag.Title = "Yetki Sil";
+}
+
+<section class="content-header">
+	<div class="header-icon">
+		<i class="fa fa-users"></i>
+	</div>
+	<div class="header-title">
+		<h1>Yetkiller</h1>
+		<small>Yetki Sil</small>
+	</div>
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-bd lobidrag">
+				<div class="panel-heading">
+					<div class="btn-group" id="buttonlist">
+						<a class="btn btn-add " href="~/Tanim/Yetkişler">
+							<i class="fa fa-list"></i>  Yetki Listesi
+						</a>
+					</div>
+				</div>
+				<div class="panel-body">
+					<dl class="dl-horizontal">
+						<dt>
+							@Html.DisplayNameFor(model => model.YetkiAdi)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.YetkiAdi)
+						</dd>
+
+						<dt>
+							@Html.DisplayNameFor(model => model.YetkiAciklama)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.YetkiAciklama)
+						</dd>
+
+					</dl>
+
+					@using (Html.BeginForm())
+					{
+						@Html.AntiForgeryToken()
+
+						<div class="form-actions no-color">
+							<input type="submit" value="Sil" class="btn btn-default" />
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

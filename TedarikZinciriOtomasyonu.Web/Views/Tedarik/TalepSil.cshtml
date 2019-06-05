@@ -1,0 +1,75 @@
+﻿@model TedarikZinciriOtomasyonu.VarlikKatmani.talep
+
+@{
+	ViewBag.Title = "Talep Sil";
+}
+
+<section class="content-header">
+	<div class="header-icon">
+		<i class="fa fa-users"></i>
+	</div>
+	<div class="header-title">
+		<h1>Talepler</h1>
+		<small>Talep Sil</small>
+	</div>
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-bd lobidrag">
+				<div class="panel-heading">
+					<div class="btn-group" id="buttonlist">
+						<a class="btn btn-add " href="~/Tedarik/Talepler">
+							<i class="fa fa-list"></i>  Talep Listesi
+						</a>
+					</div>
+				</div>
+				<div class="panel-body">
+					<dl class="dl-horizontal">
+						<dt>
+							@Html.DisplayNameFor(model => model.UrunID)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.urun.UrunAdi)
+						</dd>
+
+						<dt>
+							@Html.DisplayNameFor(model => model.FirmaID)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.firma.FirmaAdi)
+						</dd>
+
+						<dt>
+							@Html.DisplayNameFor(model => model.TalepMiktari)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.TalepMiktari)
+						</dd>
+
+						<dt>
+							@Html.DisplayNameFor(model => model.TalepTarihi)
+						</dt>
+
+						<dd>
+							@Html.DisplayFor(model => model.TalepTarihi)
+						</dd>
+
+					</dl>
+
+					@using (Html.BeginForm())
+					{
+						@Html.AntiForgeryToken()
+
+						<div class="form-actions no-color">
+							<input type="submit" value="Sil" class="btn btn-default" />
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

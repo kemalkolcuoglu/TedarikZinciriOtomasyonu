@@ -1,0 +1,70 @@
+﻿@model List<TedarikZinciriOtomasyonu.VarlikKatmani.tedarik>
+@{
+	ViewBag.Title = "Tedarikler";
+}
+
+<section class="content-header">
+	<div class="header-icon">
+		<i class="fa fa-group"></i>
+	</div>
+	<div class="header-title">
+		<h1>Panel</h1>
+		<small>Tedarikler</small>
+	</div>
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-bd lobidrag">
+				<div class="panel-heading">
+					<div class="btn-group buttonexport">
+						<a href="#">
+							<h4>Tedarik Detayları</h4>
+						</a>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="btn-group">
+						<div class="buttonexport" id="buttonlist">
+							<a class="btn btn-add" href="~/Tedarik/TedarikEkle">
+								<i class="fa fa-plus"></i> Tedarik Ekle
+							</a>
+						</div>
+					</div>
+					<div class="table-responsive">
+						<table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+							<thead>
+								<tr>
+									<th>Tedarik Takip No.</th>
+									<th>Talep Takip No.</th>
+									<th>Teslimat Adresi</th>
+									<th>Çıkış Adresi</th>
+									<th>Teslim Tarihi</th>
+									<th>Durum</th>
+									<th>İşlemler</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var items in Model)
+								{
+									<tr>
+										<td>@("#" + items.TedarikID)</td>
+										<td>@("#" + items.TalepID)</td>
+                                        <td>@(items.adres.AdresAciklama + " - " + items.adres.il.IlAdi + "/" + items.adres.ilce.IlceAdi)</td>
+										<td>@(items.adres1.AdresAciklama + " - " + items.adres1.il.IlAdi + "/" + items.adres1.ilce.IlceAdi)</td>
+										<td>@items.TedarikUcreti</td>
+										<td>@items.Durum</td>
+										<td>
+											<a class="btn btn-add btn-sm" href="~/Tedarik/TedarikDuzenle/@items.TedarikID"><i class="fa fa-pencil"></i></a>
+											<a class="btn btn-danger btn-sm" href="~/Tedarik/TedarikSil/@items.TedarikID"><i class="fa fa-trash-o"></i> </a>
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

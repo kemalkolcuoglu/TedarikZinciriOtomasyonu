@@ -1,0 +1,91 @@
+﻿@model TedarikZinciriOtomasyonu.VarlikKatmani.kisi
+
+@{
+    ViewBag.Title = "Kişi Sil";
+}
+
+<section class="content-header">
+    <div class="header-icon">
+        <i class="fa fa-users"></i>
+    </div>
+    <div class="header-title">
+        <h1>Kişiler</h1>
+        <small>Kişi Sil</small>
+    </div>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd lobidrag">
+                <div class="panel-heading">
+                    <div class="btn-group" id="buttonlist">
+                        <a class="btn btn-add " href="~/Degerler/Kisiler">
+                            <i class="fa fa-list"></i>  Kişi Listesi
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TCKNO)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.TCKNO)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Ad)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Ad)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Soyad)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Soyad)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.EPosta)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.EPosta)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Telefon)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Telefon)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Etkin)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Etkin)
+                        </dd>
+
+                    </dl>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Sil" class="btn btn-default" /> |
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

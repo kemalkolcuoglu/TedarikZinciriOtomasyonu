@@ -1,0 +1,36 @@
+C:\Users\QRyazılım\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.dll
+C:\Users\QRyazılım\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.pdb
+C:\Users\QRyazılım\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.csprojAssemblyReference.cache
+C:\Users\QRyazılım\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.csproj.CoreCompileInputs.cache
+C:\Users\QRyazılım\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.dll
+C:\Users\QRyazılım\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.pdb
+C:\Users\kemal\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.dll
+C:\Users\kemal\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.pdb
+C:\Users\kemal\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.csprojAssemblyReference.cache
+C:\Users\kemal\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.csproj.CoreCompileInputs.cache
+C:\Users\kemal\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.dll
+C:\Users\kemal\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.pdb
+C:\Users\QRyazılım\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.dll.config
+C:\Users\QRyazılım\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\EntityFramework.dll
+C:\Users\QRyazılım\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\QRyazılım\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\EntityFramework.xml
+C:\Users\QRyazılım\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\QRyazılım\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.csproj.CopyComplete
+C:\Users\kemal\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.dll.config
+C:\Users\kemal\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\EntityFramework.dll
+C:\Users\kemal\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kemal\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\EntityFramework.xml
+C:\Users\kemal\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\kemal\source\repos\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.csproj.CopyComplete
+D:\Bilgisayar\Bilgisayar Mühendisliği\Projeler\C# Projeleri\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.dll.config
+D:\Bilgisayar\Bilgisayar Mühendisliği\Projeler\C# Projeleri\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.dll
+D:\Bilgisayar\Bilgisayar Mühendisliği\Projeler\C# Projeleri\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.pdb
+D:\Bilgisayar\Bilgisayar Mühendisliği\Projeler\C# Projeleri\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\EntityFramework.dll
+D:\Bilgisayar\Bilgisayar Mühendisliği\Projeler\C# Projeleri\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\EntityFramework.SqlServer.dll
+D:\Bilgisayar\Bilgisayar Mühendisliği\Projeler\C# Projeleri\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\EntityFramework.xml
+D:\Bilgisayar\Bilgisayar Mühendisliği\Projeler\C# Projeleri\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\bin\Debug\EntityFramework.SqlServer.xml
+D:\Bilgisayar\Bilgisayar Mühendisliği\Projeler\C# Projeleri\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.csprojAssemblyReference.cache
+D:\Bilgisayar\Bilgisayar Mühendisliği\Projeler\C# Projeleri\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.csproj.CoreCompileInputs.cache
+D:\Bilgisayar\Bilgisayar Mühendisliği\Projeler\C# Projeleri\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.csproj.CopyComplete
+D:\Bilgisayar\Bilgisayar Mühendisliği\Projeler\C# Projeleri\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.dll
+D:\Bilgisayar\Bilgisayar Mühendisliği\Projeler\C# Projeleri\TedarikZinciriOtomasyonu\TedarikZinciriOtomasyonu.VarlikKatmani\obj\Debug\TedarikZinciriOtomasyonu.VarlikKatmani.pdb

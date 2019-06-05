@@ -1,0 +1,68 @@
+﻿@model List<TedarikZinciriOtomasyonu.VarlikKatmani.talep>
+@{
+	ViewBag.Title = "Talepler";
+}
+
+<section class="content-header">
+	<div class="header-icon">
+		<i class="fa fa-group"></i>
+	</div>
+	<div class="header-title">
+		<h1>Panel</h1>
+		<small>Talepler</small>
+	</div>
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-bd lobidrag">
+				<div class="panel-heading">
+					<div class="btn-group buttonexport">
+						<a href="#">
+							<h4>Talep Detayları</h4>
+						</a>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="btn-group">
+						<div class="buttonexport" id="buttonlist">
+							<a class="btn btn-add" href="~/Tedarik/TalepEkle">
+								<i class="fa fa-plus"></i> Talep Ekle
+							</a>
+						</div>
+					</div>
+					<div class="table-responsive">
+						<table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+							<thead>
+								<tr>
+									<th>Talep Takip No.</th>
+									<th>Ürün Adı</th>
+									<th>Firma</th>
+									<th>Talep Miktarı</th>
+									<th>Talep Tarihi</th>
+									<th>İşlemler</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var items in Model)
+								{
+									<tr>
+										<td>@("#" + items.TalepID)</td>
+										<td>@items.urun.UrunAdi</td>
+										<td>@items.firma.FirmaAdi</td>
+										<td>@items.TalepMiktari</td>
+										<td>@items.TalepTarihi.Value.ToString("dd/MM/yyyy")</td>
+										<td>
+											<a class="btn btn-add btn-sm" href="~/Tedarik/TalepDuzenle/@items.TalepID"><i class="fa fa-pencil"></i></a>
+											<a class="btn btn-danger btn-sm" href="~/Tedarik/TalepSil/@items.TalepID"><i class="fa fa-trash-o"></i> </a>
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

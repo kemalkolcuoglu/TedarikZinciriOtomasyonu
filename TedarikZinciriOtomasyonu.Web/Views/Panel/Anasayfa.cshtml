@@ -1,0 +1,180 @@
+﻿
+@{
+	ViewBag.Title = "Anasayfa";
+	int kisiSayisi = TedarikZinciriOtomasyonu.Web.App_Start.Tanimlamalar.kisiIslemleri.VeriSayisi();
+	float tedarikGelirleri = TedarikZinciriOtomasyonu.Web.App_Start.Tanimlamalar.tedarikIslemleri.Sorgu().Sum(x => x.TedarikUcreti) ?? 0;
+	int firmaSayisi = TedarikZinciriOtomasyonu.Web.App_Start.Tanimlamalar.firmaIslemleri.VeriSayisi();
+	int talepSayisi = TedarikZinciriOtomasyonu.Web.App_Start.Tanimlamalar.talepIslemleri.VeriSayisi();
+	List<TedarikZinciriOtomasyonu.VarlikKatmani.talep> talepler = TedarikZinciriOtomasyonu.Web.App_Start.Tanimlamalar.talepIslemleri.Sorgu().OrderByDescending(x => DateTime.Today).Take(5).ToList();
+	List<TedarikZinciriOtomasyonu.VarlikKatmani.urun> urunler = TedarikZinciriOtomasyonu.Web.App_Start.Tanimlamalar.urunIslemleri.Sorgu().Where(x => x.Stok.Value < 100).OrderBy(x => x.Stok).ToList();
+}
+
+<section class="content-header">
+	<div class="header-icon">
+		<i class="fa fa-dashboard"></i>
+	</div>
+	<div class="header-title">
+		<h1>TEDARİK ZİNCİRİ OTOMASYONU</h1>
+		<small>Selçuk Üniversitesi Teknoloji Fakültesi Bilgisayar Mühendisliği Bitirme Projesi</small>
+	</div>
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+			<div id="cardbox1">
+				<div class="statistic-box">
+					<i class="fa fa-user-plus fa-3x"></i>
+					<div class="counter-number pull-right">
+						<span class="count-number">@kisiSayisi</span>
+						<span class="slight">
+							<i class="fa fa-play fa-rotate-270"> </i>
+						</span>
+					</div>
+					<h3> Kişi Sayısı</h3>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+			<div id="cardbox2">
+				<div class="statistic-box">
+					<i class="fa fa-user-secret fa-3x"></i>
+					<div class="counter-number pull-right">
+						<span class="count-number">@firmaSayisi</span>
+						<span class="slight">
+							<i class="fa fa-play fa-rotate-270"> </i>
+						</span>
+					</div>
+					<h3>  Firma Sayısı</h3>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+			<div id="cardbox3">
+				<div class="statistic-box">
+					<i class="fa fa-money fa-3x"></i>
+					<div class="counter-number pull-right">
+						<i class="ti ti-money"></i><span class="count-number">@tedarikGelirleri</span>
+						<span class="slight">
+							<i class="fa fa-play fa-rotate-270"> </i>
+						</span>
+					</div>
+					<h3>  Tedarik Gelirleri</h3>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+			<div id="cardbox4">
+				<div class="statistic-box">
+					<i class="fa fa-files-o fa-3x"></i>
+					<div class="counter-number pull-right">
+						<span class="count-number">@talepSayisi</span>
+						<span class="slight">
+							<i class="fa fa-play fa-rotate-270"> </i>
+						</span>
+					</div>
+					<h3> Etkin Talep Sayısı</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			<div class="panel panel-bd lobidisable">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<h4>Son Talepler</h4>
+					</div>
+				</div>
+				<div class="panel-body">
+					@foreach (var item in talepler)
+					{
+						<div class="work-touchpoint">
+							<div class="work-touchpoint-date">
+								<span class="day">@item.TalepTarihi.Value.Day</span>
+								<span class="month">@item.TalepTarihi.Value.Month</span>
+							</div>
+						</div>
+						<div class="detailswork">
+							<span class="label-custom label label-default pull-right">@item.firma.FirmaAdi</span>
+							<a href="#" title="headings">@item.urun.UrunAdi</a> <br>
+							<p>@(item.firma.adres.il.IlAdi + "/" + item.firma.adres.ilce.IlceAdi + " - " + item.firma.adres.AdresAciklama)</p>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			<div class="panel panel-bd lobidisable">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<h4>Azalan Stoklar</h4>
+					</div>
+				</div>
+				<div class="panel-body">
+					@foreach (var item in urunler)
+					{
+						<div class="runnigwork">
+							<span class="label-danger label label-default pull-right">Azalan</span>
+							<i class="fa fa-dot-circle-o"></i>
+							<a href="#">@item.UrunAdi</a><br>
+							<div class="progress runningprogress">
+								<div class="progress-bar progress-bar-striped" role="progressbar" style="width: @(item.Stok)%" aria-valuenow="@(item.Stok)" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="@(item.Stok)%"></div>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-8">
+			<div class="panel panel-bd lobidrag">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<h4>Firma Konumu</h4>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="google-maps">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12571.673043618928!2d32.505390005860676!3d38.02568501176664!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d08d15e76415db%3A0x57050886b797f0ee!2sSel%C3%A7uk+%C3%9Cniversitesi+Teknoloji+Fak%C3%BCltesi!5e0!3m2!1str!2str!4v1548667682863"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<div class="panel panel-bd lobidrag">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<h4>Takvim</h4>
+					</div>
+				</div>
+				<div class="panel panel-bd">
+					<div class="panel-body">
+						<div class="monthly_calender">
+							<div class="monthly" id="m_calendar"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+@section Script
+{
+	<script>
+		function dash() {
+			$('#m_calendar').monthly({
+				mode: 'event',
+				//jsonUrl: 'events.json',
+				//dataType: 'json'
+				xmlUrl: 'events.xml'
+			});
+			$('.count-number').counterUp({
+				delay: 10,
+				time: 5000
+			});
+		}
+		dash();
+	</script>
+}

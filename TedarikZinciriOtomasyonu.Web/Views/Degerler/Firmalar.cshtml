@@ -1,0 +1,66 @@
+﻿@model List<TedarikZinciriOtomasyonu.VarlikKatmani.firma>
+@{
+    ViewBag.Title = "Firmalar";
+}
+
+<section class="content-header">
+    <div class="header-icon">
+        <i class="fa fa-group"></i>
+    </div>
+    <div class="header-title">
+        <h1>Panel</h1>
+        <small>Firmalar</small>
+    </div>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd lobidrag">
+                <div class="panel-heading">
+                    <div class="btn-group buttonexport">
+                        <a href="#">
+                            <h4>Firma Detayları</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="btn-group">
+                        <div class="buttonexport" id="buttonlist">
+                            <a class="btn btn-add" href="~/Degerler/FirmaEkle">
+                                <i class="fa fa-plus"></i> Firma Ekle
+                            </a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Firma Adı</th>
+                                    <th>Firma Adresi</th>
+                                    <th>Telefon</th>
+                                    <th>Firma Tipi</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var items in Model)
+                                {
+                                    <tr>
+                                        <td>@items.FirmaAdi</td>
+                                        <td>@(items.adres.AdresAciklama + " - " + items.adres.il.IlAdi + "/" + items.adres.ilce.IlceAdi )</td>
+                                        <td>@items.Telefon</td>
+                                        <td>@items.FirmaTipi</td>
+                                        <td>
+                                            <a class="btn btn-add btn-sm" href="~/Degerler/FirmaDuzenle/@items.FirmaID"><i class="fa fa-pencil"></i></a>
+                                            <a class="btn btn-danger btn-sm" href="~/Degerler/FirmaSil/@items.FirmaID"><i class="fa fa-trash-o"></i> </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

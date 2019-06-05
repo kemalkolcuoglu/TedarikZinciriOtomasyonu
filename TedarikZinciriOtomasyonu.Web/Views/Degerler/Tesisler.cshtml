@@ -1,0 +1,67 @@
+﻿@model List<TedarikZinciriOtomasyonu.VarlikKatmani.uretimtesisi>
+@{
+    ViewBag.Title = "Tesisler";
+}
+
+<section class="content-header">
+    <div class="header-icon">
+        <i class="fa fa-group"></i>
+    </div>
+    <div class="header-title">
+        <h1>Panel</h1>
+        <small>Üretim Tesisleri</small>
+    </div>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-bd lobidrag">
+                <div class="panel-heading">
+                    <div class="btn-group buttonexport">
+                        <a href="#">
+                            <h4>Tesis Detayları</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="btn-group">
+                        <div class="buttonexport" id="buttonlist">
+                            <a class="btn btn-add" href="~/Degerler/TesisEkle">
+                                <i class="fa fa-plus"></i> Tesis Ekle
+                            </a>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Tesis Kategorisi</th>
+                                    <th>Tesis Adı</th>
+                                    <th>Firma</th>
+                                    <th>Adres</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var items in Model)
+                                {
+                                    <tr>
+                                        <td>@items.tesiskategori.TesisKategoriAdi</td>
+                                        <td>@items.TesisAdi</td>
+                                        <td>@items.firma.FirmaAdi</td>
+                                        <td>@(items.adres.il.IlAdi + "/" + items.adres.ilce.IlceAdi + "/" + items.adres.AdresAciklama)</td>
+                                        <td>
+                                            <a class="btn btn-add btn-sm" href="~/Degerler/TesisDuzenle/@items.UretimTesisiID"><i class="fa fa-pencil"></i></a>
+                                            <a class="btn btn-danger btn-sm" href="~/Degerler/TesisSil/@items.UretimTesisiID"><i class="fa fa-trash-o"></i> </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

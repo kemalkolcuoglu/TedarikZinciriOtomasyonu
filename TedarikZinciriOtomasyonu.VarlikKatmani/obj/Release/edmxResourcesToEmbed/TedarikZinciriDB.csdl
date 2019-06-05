@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TedarikZinciriModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="adres">
+    <Key>
+      <PropertyRef Name="AdresID" />
+    </Key>
+    <Property Name="AdresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IlKodu" Type="Int32" Nullable="false" />
+    <Property Name="IlceKodu" Type="Int32" Nullable="false" />
+    <Property Name="AdresAciklama" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ilce" Relationship="Self.adres_FK_IlceKodu_Adres" FromRole="adres" ToRole="ilce" />
+    <NavigationProperty Name="il" Relationship="Self.adres_FK_IlKodu_Adres" FromRole="adres" ToRole="il" />
+    <NavigationProperty Name="firma" Relationship="Self.firma_FK_AdresID" FromRole="adres" ToRole="firma" />
+    <NavigationProperty Name="tedarik" Relationship="Self.tedarik_FK_CikisAdresiID_Tedarik" FromRole="adres" ToRole="tedarik" />
+    <NavigationProperty Name="tedarik1" Relationship="Self.tedarik_FK_TeslimAdresiID_Tedarik" FromRole="adres" ToRole="tedarik" />
+    <NavigationProperty Name="uretimtesisi" Relationship="Self.uretimtesisi_FK_AdresID_UretimTesisi" FromRole="adres" ToRole="uretimtesisi" />
+  </EntityType>
+  <EntityType Name="firma">
+    <Key>
+      <PropertyRef Name="FirmaID" />
+    </Key>
+    <Property Name="FirmaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirmaAdi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirmaAciklama" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Telefon" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fax" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="EPosta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Etkin" Type="Boolean" />
+    <Property Name="AdresID" Type="Int32" />
+    <Property Name="FirmaTipi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="adres" Relationship="Self.firma_FK_AdresID" FromRole="firma" ToRole="adres" />
+    <NavigationProperty Name="firmapersonel" Relationship="Self.firmapersonel_FK_FirmaID_FirmaPersonel" FromRole="firma" ToRole="firmapersonel" />
+    <NavigationProperty Name="talep" Relationship="Self.talep_FK_FirmaID_Talep" FromRole="firma" ToRole="talep" />
+    <NavigationProperty Name="uretimtesisi" Relationship="Self.uretimtesisi_FK_FirmaID_UretimTesisi" FromRole="firma" ToRole="uretimtesisi" />
+  </EntityType>
+  <EntityType Name="firmapersonel">
+    <Key>
+      <PropertyRef Name="FirmaPersonelID" />
+    </Key>
+    <Property Name="FirmaPersonelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirmaID" Type="Int32" />
+    <Property Name="KisiID" Type="Int32" />
+    <NavigationProperty Name="firma" Relationship="Self.firmapersonel_FK_FirmaID_FirmaPersonel" FromRole="firmapersonel" ToRole="firma" />
+    <NavigationProperty Name="kisi" Relationship="Self.firmapersonel_FK_KisiID_FirmaPersonel" FromRole="firmapersonel" ToRole="kisi" />
+  </EntityType>
+  <EntityType Name="il">
+    <Key>
+      <PropertyRef Name="IlKodu" />
+    </Key>
+    <Property Name="IlKodu" Type="Int32" Nullable="false" />
+    <Property Name="IlAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="adres" Relationship="Self.adres_FK_IlKodu_Adres" FromRole="il" ToRole="adres" />
+    <NavigationProperty Name="ilce" Relationship="Self.ilce_FK_IlKodu_Ilce" FromRole="il" ToRole="ilce" />
+  </EntityType>
+  <EntityType Name="ilce">
+    <Key>
+      <PropertyRef Name="IlceKodu" />
+    </Key>
+    <Property Name="IlceKodu" Type="Int32" Nullable="false" />
+    <Property Name="IlceAdi" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IlKodu" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="adres" Relationship="Self.adres_FK_IlceKodu_Adres" FromRole="ilce" ToRole="adres" />
+    <NavigationProperty Name="il" Relationship="Self.ilce_FK_IlKodu_Ilce" FromRole="ilce" ToRole="il" />
+  </EntityType>
+  <EntityType Name="kisi">
+    <Key>
+      <PropertyRef Name="KisiID" />
+    </Key>
+    <Property Name="KisiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TCKNO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YetkiID" Type="Int32" Nullable="false" />
+    <Property Name="Ad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Soyad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EPosta" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="Telefon" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Etkin" Type="Boolean" />
+    <Property Name="Guid" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="firmapersonel" Relationship="Self.firmapersonel_FK_KisiID_FirmaPersonel" FromRole="kisi" ToRole="firmapersonel" />
+    <NavigationProperty Name="yetki" Relationship="Self.kisi_FK_YetkiID_Kisi" FromRole="kisi" ToRole="yetki" />
+    <NavigationProperty Name="kisisifre" Relationship="Self.kisisifre_FK_KisiID_KisiSifre" FromRole="kisi" ToRole="kisisifre" />
+    <NavigationProperty Name="tedarik" Relationship="Self.tedarik_FK_KisiID_Tedarik" FromRole="kisi" ToRole="tedarik" />
+  </EntityType>
+  <EntityType Name="kisisifre">
+    <Key>
+      <PropertyRef Name="KisiSifreID" />
+    </Key>
+    <Property Name="KisiSifreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KisiID" Type="Int32" />
+    <Property Name="Sifre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="kisi" Relationship="Self.kisisifre_FK_KisiID_KisiSifre" FromRole="kisisifre" ToRole="kisi" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="talep">
+    <Key>
+      <PropertyRef Name="TalepID" />
+    </Key>
+    <Property Name="TalepID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunID" Type="Int32" />
+    <Property Name="FirmaID" Type="Int32" />
+    <Property Name="TalepMiktari" Type="Single" />
+    <Property Name="TalepTarihi" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="firma" Relationship="Self.talep_FK_FirmaID_Talep" FromRole="talep" ToRole="firma" />
+    <NavigationProperty Name="urun" Relationship="Self.talep_FK_UrunID_Talep" FromRole="talep" ToRole="urun" />
+    <NavigationProperty Name="tedarik" Relationship="Self.tedarik_FK_TalepID_Tedarik" FromRole="talep" ToRole="tedarik" />
+  </EntityType>
+  <EntityType Name="tedarik">
+    <Key>
+      <PropertyRef Name="TedarikID" />
+    </Key>
+    <Property Name="TedarikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KisiID" Type="Int32" />
+    <Property Name="TalepID" Type="Int32" />
+    <Property Name="TeslimAdresiID" Type="Int32" />
+    <Property Name="CikisAdresiID" Type="Int32" />
+    <Property Name="TeslimTarihi" Type="DateTime" Precision="3" />
+    <Property Name="Durum" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TedarikUcreti" Type="Single" />
+    <NavigationProperty Name="adres" Relationship="Self.tedarik_FK_CikisAdresiID_Tedarik" FromRole="tedarik" ToRole="adres" />
+    <NavigationProperty Name="adres1" Relationship="Self.tedarik_FK_TeslimAdresiID_Tedarik" FromRole="tedarik" ToRole="adres" />
+    <NavigationProperty Name="kisi" Relationship="Self.tedarik_FK_KisiID_Tedarik" FromRole="tedarik" ToRole="kisi" />
+    <NavigationProperty Name="talep" Relationship="Self.tedarik_FK_TalepID_Tedarik" FromRole="tedarik" ToRole="talep" />
+  </EntityType>
+  <EntityType Name="tesiskategori">
+    <Key>
+      <PropertyRef Name="TesisKategoriID" />
+    </Key>
+    <Property Name="TesisKategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TesisKategoriAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TesisKategoriAciklama" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="uretimtesisi" Relationship="Self.uretimtesisi_FK_TesisKategoriID_UretimTesisi" FromRole="tesiskategori" ToRole="uretimtesisi" />
+  </EntityType>
+  <EntityType Name="uretimtesisi">
+    <Key>
+      <PropertyRef Name="UretimTesisiID" />
+    </Key>
+    <Property Name="UretimTesisiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TesisKategoriID" Type="Int32" Nullable="false" />
+    <Property Name="AdresID" Type="Int32" Nullable="false" />
+    <Property Name="FirmaID" Type="Int32" Nullable="false" />
+    <Property Name="TesisAdi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TesisAciklama" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UretimKapasitesi" Type="Single" />
+    <NavigationProperty Name="adres" Relationship="Self.uretimtesisi_FK_AdresID_UretimTesisi" FromRole="uretimtesisi" ToRole="adres" />
+    <NavigationProperty Name="firma" Relationship="Self.uretimtesisi_FK_FirmaID_UretimTesisi" FromRole="uretimtesisi" ToRole="firma" />
+    <NavigationProperty Name="tesiskategori" Relationship="Self.uretimtesisi_FK_TesisKategoriID_UretimTesisi" FromRole="uretimtesisi" ToRole="tesiskategori" />
+    <NavigationProperty Name="urun" Relationship="Self.urun_FK_UretimTesisiID_Urun" FromRole="uretimtesisi" ToRole="urun" />
+  </EntityType>
+  <EntityType Name="urun">
+    <Key>
+      <PropertyRef Name="UrunID" />
+    </Key>
+    <Property Name="UrunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunKategoriID" Type="Int32" Nullable="false" />
+    <Property Name="UretimTesisiID" Type="Int32" />
+    <Property Name="UrunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UrunAciklama" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UrunBirimi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UrunFiyati" Type="Single" />
+    <Property Name="Stok" Type="Single" />
+    <NavigationProperty Name="talep" Relationship="Self.talep_FK_UrunID_Talep" FromRole="urun" ToRole="talep" />
+    <NavigationProperty Name="uretimtesisi" Relationship="Self.urun_FK_UretimTesisiID_Urun" FromRole="urun" ToRole="uretimtesisi" />
+    <NavigationProperty Name="urunkategori" Relationship="Self.urun_FK_UrunKategoriID_Urun" FromRole="urun" ToRole="urunkategori" />
+  </EntityType>
+  <EntityType Name="urunkategori">
+    <Key>
+      <PropertyRef Name="UrunKategoriID" />
+    </Key>
+    <Property Name="UrunKategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunKategoriAdi" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UrunKategoriAciklama" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="urun" Relationship="Self.urun_FK_UrunKategoriID_Urun" FromRole="urunkategori" ToRole="urun" />
+  </EntityType>
+  <EntityType Name="yetki">
+    <Key>
+      <PropertyRef Name="YetkiID" />
+    </Key>
+    <Property Name="YetkiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YetkiAdi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YetkiAciklama" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="kisi" Relationship="Self.kisi_FK_YetkiID_Kisi" FromRole="yetki" ToRole="kisi" />
+  </EntityType>
+  <Association Name="adres_FK_IlceKodu_Adres">
+    <End Role="ilce" Type="Self.ilce" Multiplicity="1" />
+    <End Role="adres" Type="Self.adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ilce">
+        <PropertyRef Name="IlceKodu" />
+      </Principal>
+      <Dependent Role="adres">
+        <PropertyRef Name="IlceKodu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="adres_FK_IlKodu_Adres">
+    <End Role="il" Type="Self.il" Multiplicity="1" />
+    <End Role="adres" Type="Self.adres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="il">
+        <PropertyRef Name="IlKodu" />
+      </Principal>
+      <Dependent Role="adres">
+        <PropertyRef Name="IlKodu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="firma_FK_AdresID">
+    <End Role="adres" Type="Self.adres" Multiplicity="0..1" />
+    <End Role="firma" Type="Self.firma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adres">
+        <PropertyRef Name="AdresID" />
+      </Principal>
+      <Dependent Role="firma">
+        <PropertyRef Name="AdresID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tedarik_FK_CikisAdresiID_Tedarik">
+    <End Role="adres" Type="Self.adres" Multiplicity="0..1" />
+    <End Role="tedarik" Type="Self.tedarik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adres">
+        <PropertyRef Name="AdresID" />
+      </Principal>
+      <Dependent Role="tedarik">
+        <PropertyRef Name="CikisAdresiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tedarik_FK_TeslimAdresiID_Tedarik">
+    <End Role="adres" Type="Self.adres" Multiplicity="0..1" />
+    <End Role="tedarik" Type="Self.tedarik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adres">
+        <PropertyRef Name="AdresID" />
+      </Principal>
+      <Dependent Role="tedarik">
+        <PropertyRef Name="TeslimAdresiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="uretimtesisi_FK_AdresID_UretimTesisi">
+    <End Role="adres" Type="Self.adres" Multiplicity="1" />
+    <End Role="uretimtesisi" Type="Self.uretimtesisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="adres">
+        <PropertyRef Name="AdresID" />
+      </Principal>
+      <Dependent Role="uretimtesisi">
+        <PropertyRef Name="AdresID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="firmapersonel_FK_FirmaID_FirmaPersonel">
+    <End Role="firma" Type="Self.firma" Multiplicity="0..1" />
+    <End Role="firmapersonel" Type="Self.firmapersonel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="firma">
+        <PropertyRef Name="FirmaID" />
+      </Principal>
+      <Dependent Role="firmapersonel">
+        <PropertyRef Name="FirmaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="talep_FK_FirmaID_Talep">
+    <End Role="firma" Type="Self.firma" Multiplicity="0..1" />
+    <End Role="talep" Type="Self.talep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="firma">
+        <PropertyRef Name="FirmaID" />
+      </Principal>
+      <Dependent Role="talep">
+        <PropertyRef Name="FirmaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="uretimtesisi_FK_FirmaID_UretimTesisi">
+    <End Role="firma" Type="Self.firma" Multiplicity="1" />
+    <End Role="uretimtesisi" Type="Self.uretimtesisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="firma">
+        <PropertyRef Name="FirmaID" />
+      </Principal>
+      <Dependent Role="uretimtesisi">
+        <PropertyRef Name="FirmaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="firmapersonel_FK_KisiID_FirmaPersonel">
+    <End Role="kisi" Type="Self.kisi" Multiplicity="0..1" />
+    <End Role="firmapersonel" Type="Self.firmapersonel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kisi">
+        <PropertyRef Name="KisiID" />
+      </Principal>
+      <Dependent Role="firmapersonel">
+        <PropertyRef Name="KisiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ilce_FK_IlKodu_Ilce">
+    <End Role="il" Type="Self.il" Multiplicity="1" />
+    <End Role="ilce" Type="Self.ilce" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="il">
+        <PropertyRef Name="IlKodu" />
+      </Principal>
+      <Dependent Role="ilce">
+        <PropertyRef Name="IlKodu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="kisi_FK_YetkiID_Kisi">
+    <End Role="yetki" Type="Self.yetki" Multiplicity="1" />
+    <End Role="kisi" Type="Self.kisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="yetki">
+        <PropertyRef Name="YetkiID" />
+      </Principal>
+      <Dependent Role="kisi">
+        <PropertyRef Name="YetkiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="kisisifre_FK_KisiID_KisiSifre">
+    <End Role="kisi" Type="Self.kisi" Multiplicity="0..1" />
+    <End Role="kisisifre" Type="Self.kisisifre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kisi">
+        <PropertyRef Name="KisiID" />
+      </Principal>
+      <Dependent Role="kisisifre">
+        <PropertyRef Name="KisiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tedarik_FK_KisiID_Tedarik">
+    <End Role="kisi" Type="Self.kisi" Multiplicity="0..1" />
+    <End Role="tedarik" Type="Self.tedarik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kisi">
+        <PropertyRef Name="KisiID" />
+      </Principal>
+      <Dependent Role="tedarik">
+        <PropertyRef Name="KisiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="talep_FK_UrunID_Talep">
+    <End Role="urun" Type="Self.urun" Multiplicity="0..1" />
+    <End Role="talep" Type="Self.talep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="urun">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="talep">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tedarik_FK_TalepID_Tedarik">
+    <End Role="talep" Type="Self.talep" Multiplicity="0..1" />
+    <End Role="tedarik" Type="Self.tedarik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="talep">
+        <PropertyRef Name="TalepID" />
+      </Principal>
+      <Dependent Role="tedarik">
+        <PropertyRef Name="TalepID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="uretimtesisi_FK_TesisKategoriID_UretimTesisi">
+    <End Role="tesiskategori" Type="Self.tesiskategori" Multiplicity="1" />
+    <End Role="uretimtesisi" Type="Self.uretimtesisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tesiskategori">
+        <PropertyRef Name="TesisKategoriID" />
+      </Principal>
+      <Dependent Role="uretimtesisi">
+        <PropertyRef Name="TesisKategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="urun_FK_UretimTesisiID_Urun">
+    <End Role="uretimtesisi" Type="Self.uretimtesisi" Multiplicity="0..1" />
+    <End Role="urun" Type="Self.urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uretimtesisi">
+        <PropertyRef Name="UretimTesisiID" />
+      </Principal>
+      <Dependent Role="urun">
+        <PropertyRef Name="UretimTesisiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="urun_FK_UrunKategoriID_Urun">
+    <End Role="urunkategori" Type="Self.urunkategori" Multiplicity="1" />
+    <End Role="urun" Type="Self.urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="urunkategori">
+        <PropertyRef Name="UrunKategoriID" />
+      </Principal>
+      <Dependent Role="urun">
+        <PropertyRef Name="UrunKategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TedarikZinciriContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="adres" EntityType="Self.adres" />
+    <EntitySet Name="firma" EntityType="Self.firma" />
+    <EntitySet Name="firmapersonel" EntityType="Self.firmapersonel" />
+    <EntitySet Name="il" EntityType="Self.il" />
+    <EntitySet Name="ilce" EntityType="Self.ilce" />
+    <EntitySet Name="kisi" EntityType="Self.kisi" />
+    <EntitySet Name="kisisifre" EntityType="Self.kisisifre" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="talep" EntityType="Self.talep" />
+    <EntitySet Name="tedarik" EntityType="Self.tedarik" />
+    <EntitySet Name="tesiskategori" EntityType="Self.tesiskategori" />
+    <EntitySet Name="uretimtesisi" EntityType="Self.uretimtesisi" />
+    <EntitySet Name="urun" EntityType="Self.urun" />
+    <EntitySet Name="urunkategori" EntityType="Self.urunkategori" />
+    <EntitySet Name="yetki" EntityType="Self.yetki" />
+    <AssociationSet Name="adres_FK_IlceKodu_Adres" Association="Self.adres_FK_IlceKodu_Adres">
+      <End Role="ilce" EntitySet="ilce" />
+      <End Role="adres" EntitySet="adres" />
+    </AssociationSet>
+    <AssociationSet Name="adres_FK_IlKodu_Adres" Association="Self.adres_FK_IlKodu_Adres">
+      <End Role="il" EntitySet="il" />
+      <End Role="adres" EntitySet="adres" />
+    </AssociationSet>
+    <AssociationSet Name="firma_FK_AdresID" Association="Self.firma_FK_AdresID">
+      <End Role="adres" EntitySet="adres" />
+      <End Role="firma" EntitySet="firma" />
+    </AssociationSet>
+    <AssociationSet Name="tedarik_FK_CikisAdresiID_Tedarik" Association="Self.tedarik_FK_CikisAdresiID_Tedarik">
+      <End Role="adres" EntitySet="adres" />
+      <End Role="tedarik" EntitySet="tedarik" />
+    </AssociationSet>
+    <AssociationSet Name="tedarik_FK_TeslimAdresiID_Tedarik" Association="Self.tedarik_FK_TeslimAdresiID_Tedarik">
+      <End Role="adres" EntitySet="adres" />
+      <End Role="tedarik" EntitySet="tedarik" />
+    </AssociationSet>
+    <AssociationSet Name="uretimtesisi_FK_AdresID_UretimTesisi" Association="Self.uretimtesisi_FK_AdresID_UretimTesisi">
+      <End Role="adres" EntitySet="adres" />
+      <End Role="uretimtesisi" EntitySet="uretimtesisi" />
+    </AssociationSet>
+    <AssociationSet Name="firmapersonel_FK_FirmaID_FirmaPersonel" Association="Self.firmapersonel_FK_FirmaID_FirmaPersonel">
+      <End Role="firma" EntitySet="firma" />
+      <End Role="firmapersonel" EntitySet="firmapersonel" />
+    </AssociationSet>
+    <AssociationSet Name="talep_FK_FirmaID_Talep" Association="Self.talep_FK_FirmaID_Talep">
+      <End Role="firma" EntitySet="firma" />
+      <End Role="talep" EntitySet="talep" />
+    </AssociationSet>
+    <AssociationSet Name="uretimtesisi_FK_FirmaID_UretimTesisi" Association="Self.uretimtesisi_FK_FirmaID_UretimTesisi">
+      <End Role="firma" EntitySet="firma" />
+      <End Role="uretimtesisi" EntitySet="uretimtesisi" />
+    </AssociationSet>
+    <AssociationSet Name="firmapersonel_FK_KisiID_FirmaPersonel" Association="Self.firmapersonel_FK_KisiID_FirmaPersonel">
+      <End Role="kisi" EntitySet="kisi" />
+      <End Role="firmapersonel" EntitySet="firmapersonel" />
+    </AssociationSet>
+    <AssociationSet Name="ilce_FK_IlKodu_Ilce" Association="Self.ilce_FK_IlKodu_Ilce">
+      <End Role="il" EntitySet="il" />
+      <End Role="ilce" EntitySet="ilce" />
+    </AssociationSet>
+    <AssociationSet Name="kisi_FK_YetkiID_Kisi" Association="Self.kisi_FK_YetkiID_Kisi">
+      <End Role="yetki" EntitySet="yetki" />
+      <End Role="kisi" EntitySet="kisi" />
+    </AssociationSet>
+    <AssociationSet Name="kisisifre_FK_KisiID_KisiSifre" Association="Self.kisisifre_FK_KisiID_KisiSifre">
+      <End Role="kisi" EntitySet="kisi" />
+      <End Role="kisisifre" EntitySet="kisisifre" />
+    </AssociationSet>
+    <AssociationSet Name="tedarik_FK_KisiID_Tedarik" Association="Self.tedarik_FK_KisiID_Tedarik">
+      <End Role="kisi" EntitySet="kisi" />
+      <End Role="tedarik" EntitySet="tedarik" />
+    </AssociationSet>
+    <AssociationSet Name="talep_FK_UrunID_Talep" Association="Self.talep_FK_UrunID_Talep">
+      <End Role="urun" EntitySet="urun" />
+      <End Role="talep" EntitySet="talep" />
+    </AssociationSet>
+    <AssociationSet Name="tedarik_FK_TalepID_Tedarik" Association="Self.tedarik_FK_TalepID_Tedarik">
+      <End Role="talep" EntitySet="talep" />
+      <End Role="tedarik" EntitySet="tedarik" />
+    </AssociationSet>
+    <AssociationSet Name="uretimtesisi_FK_TesisKategoriID_UretimTesisi" Association="Self.uretimtesisi_FK_TesisKategoriID_UretimTesisi">
+      <End Role="tesiskategori" EntitySet="tesiskategori" />
+      <End Role="uretimtesisi" EntitySet="uretimtesisi" />
+    </AssociationSet>
+    <AssociationSet Name="urun_FK_UretimTesisiID_Urun" Association="Self.urun_FK_UretimTesisiID_Urun">
+      <End Role="uretimtesisi" EntitySet="uretimtesisi" />
+      <End Role="urun" EntitySet="urun" />
+    </AssociationSet>
+    <AssociationSet Name="urun_FK_UrunKategoriID_Urun" Association="Self.urun_FK_UrunKategoriID_Urun">
+      <End Role="urunkategori" EntitySet="urunkategori" />
+      <End Role="urun" EntitySet="urun" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TedarikZinciriModels.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TedarikZinciriModels.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

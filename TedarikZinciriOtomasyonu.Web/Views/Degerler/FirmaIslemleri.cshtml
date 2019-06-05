@@ -1,0 +1,189 @@
+﻿@model TedarikZinciriOtomasyonu.VarlikKatmani.firma
+
+@{
+	ViewBag.Title = "FirmaIslemleri";
+	var Il = ViewData["Il"] as SelectList;
+	var Ilce = ViewData["Ilce"] as SelectList;
+	var Adres = ViewData["Adres"] as SelectList;
+}
+
+<section class="content-header">
+	<div class="header-icon">
+		<i class="fa fa-users"></i>
+	</div>
+	<div class="header-title">
+		<h1>Firmalar</h1>
+		<small>Firma İşlemleri</small>
+	</div>
+</section>
+<section class="content">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="panel panel-bd lobidrag">
+				<div class="panel-heading">
+					<div class="btn-group" id="buttonlist">
+						<a class="btn btn-add " href="~/Degerler/Firmalar">
+							<i class="fa fa-list"></i>  Firma Listesi
+						</a>
+					</div>
+				</div>
+				<div class="panel-body">
+
+					@using (Html.BeginForm())
+					{
+						@Html.AntiForgeryToken()
+
+						<div class="form-horizontal">
+							<h4>Firma</h4>
+							<hr />
+							@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+							<div class="form-group">
+								@Html.Label("İl", htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.DropDownList("IlKodu", Il, new { @class = "form-control" })
+								</div>
+							</div>
+							<div class="form-group">
+								@Html.Label("İlçe", htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.DropDownList("IlceKodu", Ilce, new { @class = "form-control" })
+								</div>
+							</div>
+							<div class="form-group">
+								@Html.LabelFor(model => model.AdresID, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.DropDownListFor(model => model.AdresID, Adres, new { @class = "form-control" })
+								</div>
+							</div>
+							<div class="form-group">
+								@Html.LabelFor(model => model.FirmaAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.FirmaAdi, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.FirmaAdi, "", new { @class = "text-danger" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.FirmaAciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.FirmaAciklama, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.FirmaAciklama, "", new { @class = "text-danger" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.FirmaTipi, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.FirmaTipi, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.FirmaTipi, "", new { @class = "text-danger" })
+								</div>
+							</div>
+
+							<div class="form-group">
+								@Html.LabelFor(model => model.Etkin, htmlAttributes: new { @class = "control-label col-md-2" })
+								<div class="col-md-10">
+									@Html.EditorFor(model => model.Etkin)
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-md-offset-2 col-md-10">
+									<input type="submit" value="Onayla" class="btn btn-default" />
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+@section Script
+{
+	<script>
+        $("#IlKodu").change(function () {
+
+            var ddlCountry = $(this);
+            var countryId = ddlCountry.val();
+
+            if (countryId != "" || countryId != "-1") {
+
+				$("#IlceKodu option").remove();
+
+                $.ajax({
+                    method: "GET",
+                    url: '@Url.Action("IleGoreIlceSec", "Panel")' + '/' + countryId
+                }).done(function (result) {
+
+					var ddlCity = $("#IlceKodu");
+
+                    for (var i = 0; i < result.length; i++) {
+                        var cityName = result[i].IlceAdi;
+                        var cityId = result[i].IlceKodu;
+                        var opt = $("<option></option>");
+
+                        opt.text(cityName);
+                        opt.attr("value", cityId);
+
+                        ddlCity.append(opt);
+                    }
+                })
+            }
+            else {
+				$("#IlceKodu option").not(":first").remove();
+            }
+        });
+	</script>
+	<script>
+		$("#IlceKodu").change(function () {
+
+			var ddlCountry = $(this);
+			var ilId = $("#IlKodu").val();
+            var countryId = ddlCountry.val();
+
+            if (countryId != "" || countryId != "-1") {
+
+                $("#AdresID option").remove();
+
+                $.ajax({
+					method: "GET",
+					url: '@Url.Action("IlIlceGoreAdresSec", "Panel")' + '?il=' + ilId + '&ilce=' + countryId
+                }).done(function (result) {
+
+					var ddlCity = $("#AdresID");
+
+                    for (var i = 0; i < result.length; i++) {
+                        var cityName = result[i].IlceAdi;
+                        var cityId = result[i].IlceKodu;
+                        var opt = $("<option></option>");
+
+                        opt.text(cityName);
+                        opt.attr("value", cityId);
+
+                        ddlCity.append(opt);
+                    }
+                })
+            }
+            else {
+				$("#AdresID option").not(":first").remove();
+            }
+        });
+	</script>
+}
